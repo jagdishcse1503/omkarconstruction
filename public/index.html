@@ -225,13 +225,17 @@
                     <h1>do you have any questions?</h1>
                     <h2>feel free to contact us!</h2>
                 </aside>
-                <form id="form">
+                <form name="contact" method="POST" data-netlify="true">
+                    <input type="hidden" name="form-name" value="contact">
+                    
                     <input type="text" name="name" placeholder="Name" required>
                     <input type="email" name="email" placeholder="Email" required>
                     <input type="text" name="message" placeholder="Message" required>
-                    <input type="submit" value="Submit" id="submit">
-                    <p id="msg"></p>
-                </form>
+                    
+                    <input type="submit" value="Submit">
+                  </form>
+                  
+                
                 
                 <script>
                 document.getElementById('form').addEventListener('submit', function(e) {
