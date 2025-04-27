@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Buildings Gallery</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <!-- Animate.css & WOW.js -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-VbmBbGriWzM0v87+2UoG8a9Lk0m5NCwV+lYjMZtw5sJ2PjZ3Yh5Xm7B0i0lX6/ReMN5/3yH9CgVZ3W/aM3/Mmw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Zi0YrN2Rms8tsHcG7d35Y5TkXnX4LZj/0YtZ1ixzZcewsPLnBif3UiY58sRz7Q6VariantsXbZM3knX7xMofuU=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <style>
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .gallery {
+      margin-top: 20px;
+    }
+    .gallery .col-md-4 {
+      margin-bottom: 30px;
+    }
+    /* Lightbox Overlay */
+    #lightbox-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    #lightbox-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <header class="container text-center my-4">
+    <h1 class="wow animate__animated animate__fadeInDown">BUILDINGS DESIGN</h1>
+  </header>
+  
+  <div class="container gallery">
+    <div class="row">
+      <!-- Six building images in 2x3 grid -->
+      <div class="col-md-4 wow animate__animated animate__fadeInUp" data-wow-delay="0s">
+        <img src="Images/pexels-athena-2323080.jpg" alt="Building 1" class="img-fluid lightbox-trigger">
+      </div>
+      <div class="col-md-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+        <img src="Images/pexels-umaraffan499-190417.jpg" alt="Building 2" class="img-fluid lightbox-trigger">
+      </div>
+      <div class="col-md-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.4s">
+        <img src="Images/pexels-lucaspezeta-2100681.jpg" alt="Building 3" class="img-fluid lightbox-trigger">
+      </div>
+      <div class="col-md-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.6s">
+        <img src="Images/pexels-lucaspezeta-2100681.jpg" alt="Building 4" class="img-fluid lightbox-trigger">
+      </div>
+      <div class="col-md-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.8s">
+        <img src="Images/pexels-marosmarkovic-1451416.jpg" alt="Building 5" class="img-fluid lightbox-trigger">
+      </div>
+      <div class="col-md-4 wow animate__animated animate__fadeInUp" data-wow-delay="1s">
+        <img src="Images/pexels-myatezhny39-2209529.jpg" alt="Building 6" class="img-fluid lightbox-trigger">
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="index.html" class="btn btn-primary wow animate__animated animate__fadeIn">← Back to Home</a>
+    </div>
+  </div>
+
+  <!-- Lightbox Overlay -->
+  <div id="lightbox-overlay">
+    <img id="lightbox-image" src="" alt="Expanded image">
+  </div>
+
+  <script>
+    new WOW().init();
+    // Lightbox functionality
+    const overlay = document.getElementById('lightbox-overlay');
+    const overlayImage = document.getElementById('lightbox-image');
+    document.querySelectorAll('.lightbox-trigger').forEach(img => {
+      img.addEventListener('click', () => {
+        overlayImage.src = img.src;
+        overlay.style.display = 'flex';
+        overlay.classList.add('animate__animated', 'animate__fadeIn');
+      });
+    });
+    overlay.addEventListener('click', () => {
+      overlay.classList.remove('animate__fadeIn');
+      overlay.classList.add('animate__animated', 'animate__fadeOut');
+      overlay.addEventListener('animationend', () => {
+        overlay.style.display = 'none';
+        overlay.classList.remove('animate__fadeOut');
+      }, { once: true });
+    });
+  </script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
